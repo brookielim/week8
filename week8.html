@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>week8</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&family=Numans&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;      /* ← flex-start 에서 center로 */
+  padding: 20px;                /* ← 위 padding 줄여서 중앙으로 */
+  background: #ffffff;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+h1 {
+  margin-top: 20px;             /* ← 60px → 20px */
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: lowercase;
+  color: #333;
+  line-height: 1.4;
+  white-space: nowrap;
+  margin-bottom: 40px;       
+}
+
+
+    .back {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      font-size: 16px;
+      font-family: 'Numans', sans-serif;
+      color: #666;
+      text-decoration: none;
+    }
+
+
+    .wrap {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 1100px;
+
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: center;
+      column-gap: 80px;
+      align-items: center;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn {
+      width: 220px;
+      height: auto;
+      cursor: pointer;
+      display: block;
+      transition: transform 0.1s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .emoji-area {
+      position: relative;
+      width: 380px;
+      height: 380px;
+    }
+
+    .face {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .emoji-part {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      pointer-events: none;
+    }
+
+    #emoji-eyes {
+      top: 120px;
+      width: 240px;
+      height: auto;
+    }
+
+    #emoji-mouth {
+      top: 235px;
+      width: 240px;
+      height: auto;
+    }
+
+    #emoji-mouth[src="mouth2.png"] {
+      width: 80px;
+    }
+    #emoji-mouth[src="mouth5.png"] {
+      width: 90px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="../collection.html" class="back">&lt; back</a>
+
+  <h1>create your own emoji</h1>
+
+  <div class="wrap">
+
+    <div class="col" id="eyes-col">
+      <img src="eyebut1.png" class="btn" data-eye="eye1.png"  alt="eyes 1">
+      <img src="eyebut2.png" class="btn" data-eye="eye2.png"  alt="eyes 2">
+      <img src="eyebut3.png" class="btn" data-eye="eye3.png"  alt="eyes 3">
+      <img src="eyebut4.png" class="btn" data-eye="eye4.png"  alt="eyes 4">
+      <img src="eyebut5.png" class="btn" data-eye="eye5.png"  alt="eyes 5">
+    </div>
+
+    <div class="emoji-area">
+      <img src="face.png" class="face" alt="emoji base">
+
+      <img id="emoji-eyes"  class="emoji-part" alt="">
+      <img id="emoji-mouth" class="emoji-part" alt="">
+    </div>
+
+    <div class="col" id="mouth-col">
+      <img src="mouthbut1.png" class="btn" data-mouth="mouth1.png" alt="mouth 1">
+      <img src="mouthbut2.png" class="btn" data-mouth="mouth2.png" alt="mouth 2">
+      <img src="mouthbut3.png" class="btn" data-mouth="mouth3.png" alt="mouth 3">
+      <img src="mouthbut4.png" class="btn" data-mouth="mouth4.png" alt="mouth 4">
+      <img src="mouthbut5.png" class="btn" data-mouth="mouth5.png" alt="mouth 5">
+    </div>
+
+  </div>
+
+  <script>
+    const emojiEyes  = document.getElementById('emoji-eyes');
+    const emojiMouth = document.getElementById('emoji-mouth');
+
+    document.querySelectorAll('#eyes-col .btn').forEach(img => {
+      img.addEventListener('click', () => {
+        const src = img.dataset.eye;     
+        emojiEyes.src = src;
+      });
+    });
+
+    document.querySelectorAll('#mouth-col .btn').forEach(img => {
+      img.addEventListener('click', () => {
+        const src = img.dataset.mouth;   
+        emojiMouth.src = src;
+      });
+    });
+  </script>
+
+</body>
+</html>
